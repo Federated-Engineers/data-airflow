@@ -5,9 +5,7 @@ on:
     branches:
       - "**" 
     paths:
-      - business_logic/
-      - dags/
-      - plugins/
+      - '**.py'
       
 jobs:
   lint:
