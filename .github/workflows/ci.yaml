@@ -79,4 +79,5 @@ jobs:
           git commit -m "Update image to ${{ github.sha }}"
           
           # Push
-          git push -f https://${GIT_TOKEN}@https://github.com/cappymayor/argo-repo-demo.git master
+          git push
+          # - f https://${GIT_TOKEN}@https://github.com/cappymayor/argo-repo-demo.git master
