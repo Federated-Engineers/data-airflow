@@ -65,9 +65,9 @@ jobs:
           cd kubernetes-deployments/applications/airflow/
           
           if [[ "$OSTYPE" == "darwin"* ]]; then
-            sed -i '' "s|defaultAirflowTag: 049417293525.dkr.ecr.eu-central-1.amazonaws.com/airflow:.*|defaultAirflowTag: 049417293525.dkr.ecr.eu-central-1.amazonaws.com/airflow:version-${{ github.sha }}|g" values.yaml
+            sed -i '' "s|tag: version-:.*|tag: tag:version-${{ github.sha }}|g" values.yaml
           else
-            sed -i "s|defaultAirflowTag: 049417293525.dkr.ecr.eu-central-1.amazonaws.com/airflow:.*|defaultAirflowTag: 049417293525.dkr.ecr.eu-central-1.amazonaws.com/airflow:version-${{ github.sha }}|g" values.yaml
+            sed -i "s|tag: version-:.*|tag: tag:version-${{ github.sha }}|g" values.yaml
           fi
           
           # Commit changes
