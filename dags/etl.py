@@ -1,5 +1,6 @@
 import datetime
-
+import awswrangler as wr
+import pandas as pd
 import boto3
 from airflow import DAG
 from airflow.operators.python import PythonOperator
@@ -9,9 +10,10 @@ DAG_ID = 'Federated-Engineers-Demo'
 
 # simple task to test full flow
 def demo():
-    s3 = boto3.resource('s3')
-    for bucket in s3.buckets.all():
-        return bucket.name
+    wr.s3.to_parquet(
+        df=pd.DataFrame({'col': [1, 2, 3]}),
+        path='s3://poc-bucket-oremeta/prefix/my_file.parquet')       
+    return "Data written to s3"
 
 
 default_args = {
